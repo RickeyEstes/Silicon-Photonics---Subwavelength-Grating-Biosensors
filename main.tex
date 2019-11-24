@@ -105,7 +105,7 @@ An optical ring resonator (ORR) is said to be ``on resonance'' when the propagat
 \end{equation}
 where $r$ is the radius of the ring and $n_\text{eff}$ is the effective index of the guided mode. When an input waveguide is placed in close proximity to an ORR, the incoming signal will selectively couple from the waveguide to the resonator, depending on if the wavelength of the signal satisfies the resonance condition of the ORR.
 
-Molecular binding occurs when analytes come into contact with a functionalized surface. The adsorption of analytes to the surface of a functionalized ORR causes a change in the local effective index, thus inducing a change in the ORR's resonant wavelength, as evident from equation \eqref{eq:lamdares}. By examining the shift in $\lambda_\text{res}$, we can determine the concentration of a given analyte in the sample. In order to do this, we must first define several metrics. The most important metrics for quantifying ORR sensor performance are as follows: (1) Sensitivity ($S$), (2) Resonator Quality Factor ($Q$), and (3) the Limit of Detection (LoD) \cite{sipresonators}. This remainder of this section is concerned with the description of each of these metrics.
+Molecular binding occurs when analytes come into contact with a functionalized surface. The adsorption of analytes to the surface of a functionalized ORR causes a change in the local effective index, thus inducing a change in the ORR's resonant wavelength, as evident from equation \eqref{eq:lamdares}. By examining the shift in $\lambda_\text{res}$, we can determine the concentration of a given analyte in the sample. In order to do this, we must first define several metrics. The most important metrics for quantifying ORR sensor performance are as follows: (1) Sensitivity ($S$), (2) Resonator Quality Factor ($Q$), and (3) the Limit of Detection (LoD) \cite{sipresonators}. The remainder of this section is concerned with the description of each of these metrics.
 
 \vspace{-1em}
 \subsection{1. Sensitivity ($S$)}
@@ -118,18 +118,21 @@ The waveguide sensitivity parameter $S_w$ serves to map the process of molecular
     S_w = \frac{\partial n_\text{eff}}{\partial \Gamma},
     \label{eq:Sw}
 \end{equation}
-where $\partial \Gamma$ is the variation of a physical parameter of interest \cite{sipresonators}. Typically, $\Gamma$ either refers to the refractive index of the cladding, $n_c$, or the thickness of the adsorbed biomolecular layer, $t_\text{ad}$.
+where $\partial \Gamma$ is the variation of a physical parameter of interest \cite{sipresonators}. Typically, $\Gamma$ either refers to the refractive index of the cladding, $n_c$, or the effective thickness of the adsorbed biomolecular layer, $t_\text{ad}$.
 
 The case in which $\partial \Gamma = \partial n_c$ in equation \eqref{eq:Sw}, is referred to as the waveguide bulk sensitivity, $S_{w,b} = \frac{\partial n_\text{eff}}{\partial n_c}$. The total bulk sensitivity, being the change in resonant wavelength ($\Delta \lambda_\text{res}$) per unit change in refractive index of the cladding ($\Delta n_\text{clad}$), can then be expressed as follows \cite{swg3}:
 \begin{equation}
     S_b = \frac{\Delta \lambda_\text{res}}{\Delta n_\text{clad}} = \frac{\lambda_\text{res}}{n_g}\left(\frac{\partial n_\text{eff}}{\partial n_\text{clad}}\right) \qquad \left[\frac{\text{nm}}{\text{RIU}}\right].
     \label{eq:Sbulk}
 \end{equation}
-Alternatively, the case in which $\partial \Gamma = \partial t_\text{ad}$ is referred to as the waveguide surface sensitivity,  $S_{w,s} = \frac{\partial n_\text{eff}}{\partial t_\text{ad}}$. The total surface sensitivity, being the change in the resonant wavelength ($\Delta \lambda_\text{res}$) per unit change in the thickness of the adsorbed biomolecular layer ($ \Delta t_\text{ad}$), can then be expressed as follows:
+Alternatively, the case in which $\partial \Gamma = \partial t_\text{ad}$ is referred to as the waveguide surface sensitivity,  $S_{w,s} = \frac{\partial n_\text{eff}}{\partial t_\text{ad}}$. The total surface sensitivity, being the change in the resonant wavelength ($\Delta \lambda_\text{res}$) per unit change in the effective thickness of the adsorbed biomolecular layer ($ \Delta t_\text{ad}$), can then be expressed as follows:
 \begin{equation}
     S_s = \frac{\Delta \lambda_\text{res}}{\Delta t_\text{ad}} = \frac{\lambda_\text{res}}{n_g}\left(\frac{\partial n_\text{eff}}{\partial t_\text{ad}}\right) \qquad \left[\frac{\text{nm}}{\text{nm}}\right].
     \label{eq:Ssurf}
 \end{equation}
+One caveat of the surface sensitivity method is the emphasis on 'effective' thickness, since only one molecule can rest at any given binding site. The thickness for a fully  filled surface is the length of the molecule on the orientation at which it binds, i.e. the maximal perpendicular distant from the waveguide (L). Since we cannot expect all of the binding sites to be occupied by the target molecule we use the notion of effective thickness defined as: 
+$t_\text{ad}$ = $L\frac{n_o}{n_e+n_o}$ where $n_o$ and $n_e$ are the number of occupied and empty binding sites, respectively. Therefore, the effective thickness is modulated by the concentration of the our target molecule in the cladding since the number of bound molecules is proportional to the concentration.
+
 While these electromagnetic definitions of sensitivity are useful to a photonic systems designer, they can also be made useful from a biochemical perspective \cite{swg1}. In particular, we can map the waveguide bulk sensitivity as $S_{w,b} \to \frac{\partial n_\text{eff}}{\partial c}$, where $\partial c$ is the variation in molar concentration with units of moles per liter $\left[M\right]$. This results in a total bulk sensitivity with units of $\left[\frac{\text{nm}}{M}\right]$, interpreted as the resonant wavelength shift per unit change in molarity. Similarly, we can map the waveguide surface sensitivity can as $S_{w,s} \to \frac{\partial n_\text{eff}}{\partial \rho_s}$, where $\partial \rho_s$ is the variation in mass surface density of the adsorbed layer with units of $\left[\frac{\text{pg}}{\text{mm}^2}\right]$. This results in a total surface sensitivity with units of $\left[\frac{\text{nm}}{\text{pg}/\text{mm}^2}\right]$, interpreted as the resonant wavelength shift per unit change in adsorbed layer mass surface density.
 \vspace{-1em}
 \subsection{2. Resonator Quality Factor ($Q$)}
@@ -152,24 +155,28 @@ Thus, the iLoD of equation \eqref{eq:iLoD} provides a means for quantitatively c
 \vspace{-1em}
 % will merge this info into previous section and focus on SWG ORRs here
 %In the case of optical ring resonators there is a restriction on the wavelengths which can form modes on the waveguide. This restriction is based on the discrete solutions to Maxwell's equations and can be expressed as the phase condition: the phase shift after one cycle through the ring must be a multiple of 2$\pi$. As the cladding index changes due to analyte being deposited on the waveguide's surface there is a shift in the resonant wavelength of the ring resonator. This is caused by the slight variation of the boundary condition between the core and cladding resulting in a changing critical angle, thus changing the fundamental mode and resonant wavelength. The quality factor is of significant interest in ring resonator structures since it determines the ratio of energy stored by the structure to the energy lost per cycle, as such the quality factor is significantly related to the confinement factor. Since optical ring resonators have relatively high confinement factors they are efficient in terms of power. The advantages of conventional optical ring resonators is their simplicity and high quality factors however the disadvantage is that, since most of the energy travels inside the waveguide structure (high confinement), they are less sensitive to a change in refractive index in the cladding material. Thus optical ring resonators will have lower bulk and surface sensitivities. 
-In this section, we evaluate the performance of SWG ORRs and compare with conventional ORRs for biosensing applications.
+%In this section, we evaluate the performance of SWG ORRs and compare with conventional ORRs for biosensing applications.
 
 In the case of SWG ORRs the analytical approach is that of the effective refractive index method. As discussed in the section on SWG waveguides, there are 3 regimes of operation for Bragg gratings (radiation, reflection and subwavelength), for our purposes we are interested in the subwavelength case. In this regime, waveguide behaves if it were a continuous waveguide with reduced refractive index ($n_\text{core-eq}$). In particular, we have
 \begin{equation}
     n_\text{core-eq} = n_\text{clad} + \eta \Delta n,
     \label{eq:n_eq}
 \end{equation}
-where $\eta$ is the duty cycle, and $\Delta n$ is the refractive index contrast:  $\Delta n = n_\text{core} - n_\text{clad}$ \cite{swg3}. Using this method, we can greatly simplify analysis of SWG ORRs, treating them as composed of conventional waveguides with reduced index contrast. The reduced index contrast results in one the the primary advantages; that is, most of the energy is carried outside the the core material. As a result,SWG ORRs have much greater sensitivities to changing refractive indices in the cladding material. 
+where $\eta$ is the duty cycle, and $\Delta n$ is the refractive index contrast:  $\Delta n = n_\text{core} - n_\text{clad}$ \cite{swg3}. Using this method, we can greatly simplify analysis of SWG ORRs, treating them as composed of conventional waveguides with reduced index. The index contrast results in one of the primary advantages; that is, most of the energy is carried outside the the core material, hence the wave travels in the cladding. As a result, SWG ORRs have much greater sensitivities to changing refractive indices in the cladding material. Although the reduced confinement is beneficial for biosensing sensitivity, it becomes problematic when considering bent waveguides, such as those that form ring resonators.
 
-While all ORRs experience bend losses, losses with SWG ORRs is noticeably higher, resulting in lower $Q$-factors. 
+While all ORRs experience bend losses, losses with SWG ORRs is noticeably higher due to lower optical confinement. This higher bend loss directly results in significantly lower $Q$-factors. One way to mitigate unacceptable bend loss is to alter the rectangular geometry of the segments in the ring structure. In particular, experimental results with  trapezoidal silicon pillars (henceforth referred to as T-SWG ORR), have demonstrated that it is possible to significantly reduce the bend loss \cite{trapezoidal}. For ORRs of similar size, the T-SWG design maintains both high Q factor and high sensitivity when compared with rectangular segment SWG ORRs. 
 
-One limitation of conventional SWG ORR is the size. A large bend loss occurs in small radius of SWG ORR. With the trapezoidal silicon pillars (T-SWG ORR), we can significantly reduce the bend loss and manufacture the small radius SWG ORR. The schematic of 5um radius T-SWG ORR is in FIG.5.
+The side-by-side shown in FIG.\ref{fig:swgSEM} illustrates the difference between rectangular pillar and trapezoidal pillar SWG ORRs. As we can see the trapezoidal pillars take advantage of the Snell's law of refraction to better guide the wave travelling through the ORR, bending it slightly with each grating it passes. In doing so, bending losses are minimized. As a result T-SWG ORRs can be built on much smaller areas than conventional rectangular SWG ORRs without sacrificing the quality factor nor sensitivity. All this is made possible because of the decreased bending loss combined with the SWG design which allows the wave to travel in the cladding while remaining guided, making the modes more sensitive to changing refractive indices without considerable bending loss.
+
+
+
+%and manufacture the small radius SWG ORR. The schematic of 5um radius T-SWG ORR is in FIG.5.
 %% micrometer in latex
-With the time-domain coupled-mode theory, the quality factor $Q$ can be calculated with
-\begin{equation}
-    \frac{1}{Q} = \frac{1}{Q_C}+\frac{1}{Q_0}
-\end{equation}
-where $Q_0$ is the intrinsic quality factor and $Q_C$ is the coupling quality factor which depends on the coupling strength between SWG ORR and the bus waveguide. To increase the quality factor of the SWG ORR, it is necessary to increase not only the coupling quality factor by increasing the gap between SWG ORR and buss waveguide, but also the intrinsic quality factor. The large bend loss is the main factor which limits $Q_0$. Therfore, it is important to minimize bend loss in small radius SWG ORR. 
+%With the time-domain coupled-mode theory, the quality factor $Q$ can be calculated with
+%\begin{equation}
+    %\frac{1}{Q} = %\frac{1}{Q_C}+\frac{1}{Q_0}
+%\end{equation}
+%where $Q_0$ is the intrinsic quality factor and $Q_C$ is the coupling quality factor which depends on the coupling strength between SWG ORR and the bus waveguide. To increase the quality factor of the SWG ORR, it is necessary to increase not only the coupling quality factor by increasing the gap between SWG ORR and buss waveguide, but also the intrinsic quality factor. The large bend loss is the main factor which limits $Q_0$. Therfore, it is important to minimize bend loss in small radius SWG ORR. 
 
 
 %% conventional stripWGORR 
@@ -196,10 +203,25 @@ where $Q_0$ is the intrinsic quality factor and $Q_C$ is the coupling quality fa
 
 \section{V. Practical Implementations}
 \vspace{-1em}
+In this section, we compare SWG-ORRs to continuous ORR designs. In addition, we compare the performance of the T-SWG ORR design with that of the conventional rectangular (R-SWG) ORR design. In addition, to ensure the effectiveness of subwavelength grating micro-ring resonator (SWGMR) devices we must look at how the analytical results compare to the simulated system results, and more importantly how experimental results conducted in the real world measure up to the analytical and simulated approximations.
 
-In order to ensure the effectiveness of subwavelength grating micro-ring resonator (SWGMR) devices we must look at how the analytical results compare to the simulated system results, and more importantly how these measure up to the experimental results conducted in the real world. We 
+As we would expect simulations yielded nearly identical results as the analytical approaches. What may be surprising is the fact that experimental results of sensitivities fell short of the latter approaches as discussed in \cite{swg3}. The reasons for this are simply the imperfections that occur when manufacturing such small and delicate devices, and the uncertainties which accompany experiments. Nonetheless, the result for iLoD (our best metric for biosensor performance, as discussed in previous sections) was on the order of twice the theoretical value (exp: $5.5*10^\text{-4}$; th: $2.4*10^\text{-4}$)\cite{swg3}. Despite the disconnect between the experiments and theory we still have a good approximation of the iLoD from theoretical methods. A good rule of thumb would be to double the theoretical iLoD for results you would get in practice.
+
+When looking at the biosensing performances of SWG ORRs compared to that of continuous ORRs it quickly becomes clear that the SWG devices interactions with the cladding material play a significant role in improving results. This comes as no surprise since SWGs allow guided modes to travel in the cladding and thus interact more directly with the analyte. According to the experiments done in \cite{swg3} SWG ORRs can produce a 2-fold sensitivity increase when compared to the best TM mode continuous ring resonators. Compared to TE mode continuous waveguide ORRs, since these results are for TE mode SWG ORRs, the increase in performance translates to an 8-fold increase in sensitivity.
+
+
+
+When we look into the future of SWG ORR biosensors, we see much promise in trapezoidal silicon pillars. In fact, as shown in TABLE \ref{table:}!, the quality factor of 10 $\mu$m radius T-SWG ORR can be 3 times that of its rectangular equivalent. Furthermore, when the radius is decreased to 5 $\mu$m the trapezoidal pillars lead to a more than 4-fold increase in $Q$. In the case where the ORRs were made specifically for biosensing purposes (i.e. the cladding material was water), we can compare the experimental performances of T-SWG and R-SWG ORRs. What we find is that the optimal performance is achieved at radii of 10 microns and 30 microns for T-SWG and R-SWG devices respectively. The duty cycles and feature sizes were also slightly different, as shown in TABLE \ref{table:}!. In the end the T-SWG outperformed the R-SWG device by achieving a quality factor of 9,100 over 7,000, despite the reduced radius of curvature. In addition, the sensitivity of the T-SWG was 440.5 nm/RIU, beating the R-SWG sensitivity of 405 nm/RIU. This is all taken into account and summarized by the intrinsic Limit of Detection (iLoD), in which the trapezoidal pillar device achieved $3.9*10^\text{-4}$ versus the rectangular pillar result of $5.6*10^\text{-4}$, meaning the T-SWG could produce detectable changes in the resonant frequency with roughly 2/3 the amount of input. Therefore, the significance of T-SWG ORRs to biosensing applications cannot be overlooked, it produces greater experimental resolution even when confined to a smaller area than its R-SWG counterpart.
+
+An important consideration to be accounted for is the feasibility of producing SWG ORR biosensors on large scales for commercialization. As we know, silicon photonics are compatible with the existing CMOS foundry processes and can therefore be produced at relatively low cost even on large scales. The major drawback is that the minimum feature size of this process is roughly 130 nm which is too large to fabricate many of the structures discussed in this paper. Ideally, we would require a minimum feature size of roughly 75 nm. However, electron beam (E-beam) lithography can achieve these scales and even a little smaller but it is a more costly process. Therefore, the smallest and best performing devices would be practical for only the most state-of-the-art applications. Until these problems are solved, we will need to: (1) content ourselves with larger devices without the potential for as many multiplexed SWG ORRs on a single chip, or (2) accept greater loss and larger group index by making devices closer to the Bragg condition (larger feature size requiring larger grating period). Overall, the practical implementations seem very promising but we still have a good deal of progress ahead of us.
 
 %https://spie.org/news/4131-assessing-silicon-photonic-biosensors-for-home-healthcare?SSO=
+
+The conventional biosensor assay, enzyme-linked immunosorbent assays (ELISA) requires a experimental set up table and trained technician to perform the immuoassay. Also, it requires 96 different label in wells to detect analytes, which makes the process costly and lengthy. Therefore, foundary compatible label free biosensor will lighten the process of the medical system.
+
+To achieve ELISA-like photonic device, the intrinsic limit of detection has to reach to the theoretical value. According to the \cite{labelfree2}, the theoretical iLoD in aqueous solution is set as $2.4*10^\text{-4}$ RIU at 1550 nm. As we previously analyzed, T-SWG ORR is the most competitive photonic device which has iLoD of $3.9*10^\text{-4}$ RIU at 1550 nm. 
+
+
 \pagebreak
 
 
@@ -208,7 +230,7 @@ In order to ensure the effectiveness of subwavelength grating micro-ring resonat
 
 \section{VI. Conclusion}
 \vspace{-1em}
-As silicon photonic devices are compatible with existing CMOS foundry processes, ORR biosensors are well-suited for frontline diagnostic applications, such as early detection, drug testing, blood typing, and more.
+As silicon photonic devices are compatible with existing CMOS foundry processes, ORR biosensors are well-suited for frontline diagnostic applications, such as early detection, drug testing, blood typing, and more. 
 
 
 
